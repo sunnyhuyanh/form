@@ -25,54 +25,54 @@
           <input type="text" name="entry.1262754767" placeholder="Nguyễn Văn A" required>
         </div>
 
-        <div class="grid">
-          <div class="group">
-            <label>Số điện thoại <span style="color:#ef4444">*</span></label>
-            <input type="tel" name="entry.1009072280" placeholder="0901234567" required>
+        <div class="group">
+          <label>Số điện thoại <span style="color:#ef4444">*</span></label>
+          <input type="tel" name="entry.1009072280" placeholder="0901234567" required>
+        </div>
+
+        <div class="group">
+          <label>Nhu cầu mua <span style="color:#ef4444">*</span></label>
+          <div class="radio-group">
+            <label class="radio-item">
+              <input type="radio" name="entry.1312703791" value="Mua đầu tư" required>
+              <span>Mua đầu tư</span>
+            </label>
+            <label class="radio-item">
+              <input type="radio" name="entry.1312703791" value="Mua ở" required>
+              <span>Mua ở</span>
+            </label>
+            <label class="radio-item">
+              <input type="radio" name="entry.1312703791" value="Mua làm nhà vườn" required>
+              <span>Mua làm nhà vườn</span>
+            </label>
+            <label class="radio-item">
+              <input type="radio" name="entry.1312703791" value="Other:" id="otherNhuCauRadio" required>
+              <span>Other:</span>
+            </label>
           </div>
-          <div class="group">
-            <label>Email</label>
-            <input type="email" name="entry.689609400" placeholder="email@domain.com">
+          <div class="other-box" id="otherNhuCauBox">
+            <input type="text" name="entry.1740947791" placeholder="Vui lòng ghi rõ nhu cầu khác...">
           </div>
         </div>
 
         <div class="group">
-          <label>Nhu cầu quan tâm <span style="color:#ef4444">*</span></label>
+          <label>Ngày muốn đi tham quan BĐS <span style="color:#ef4444">*</span></label>
           <div class="radio-group">
             <label class="radio-item">
-              <input type="radio" name="entry.1312703791" value="Mua để ở" required>
-              <span>Mua để ở</span>
+              <input type="radio" name="entry.1622652631" value="Thứ 5" required>
+              <span>Thứ 5</span>
             </label>
             <label class="radio-item">
-              <input type="radio" name="entry.1312703791" value="Đầu tư sinh lời" required>
-              <span>Đầu tư sinh lời</span>
+              <input type="radio" name="entry.1622652631" value="Chủ Nhật" required>
+              <span>Chủ Nhật</span>
             </label>
             <label class="radio-item">
-              <input type="radio" name="entry.1312703791" value="Cả để ở và đầu tư" required>
-              <span>Cả để ở và đầu tư</span>
+              <input type="radio" name="entry.1622652631" value="Other:" id="otherNgayRadio" required>
+              <span>Other:</span>
             </label>
           </div>
-        </div>
-
-        <div class="group">
-          <label>Thời gian dự kiến tham quan dự án <span style="color:#ef4444">*</span></label>
-          <div class="radio-group">
-            <label class="radio-item">
-              <input type="radio" name="entry.1622652631" value="Trong tuần này" required>
-              <span>Trong tuần này</span>
-            </label>
-            <label class="radio-item">
-              <input type="radio" name="entry.1622652631" value="Cuối tuần này" required>
-              <span>Cuối tuần này</span>
-            </label>
-            <label class="radio-item">
-              <input type="radio" name="entry.1622652631" value="Tuần sau" required>
-              <span>Tuần sau</span>
-            </label>
-            <label class="radio-item">
-              <input type="radio" name="entry.1622652631" value="Chưa xác định, chỉ cần tư vấn trước" required>
-              <span>Chưa xác định, chỉ cần tư vấn trước</span>
-            </label>
+          <div class="other-box" id="otherNgayBox">
+            <input type="text" name="entry.1740947791" placeholder="Ví dụ: Thứ 7 tuần này, 15/12, hoặc ngày cụ thể...">
           </div>
         </div>
 
@@ -81,11 +81,10 @@
         </button>
 
         <div class="success" id="success">
-          Cảm ơn quý khách! Thông tin đã được gửi thành công.<br>
-          Chúng tôi sẽ liên hệ ngay trong vài phút tới!
+          Cảm ơn quý khách! Chúng tôi đã nhận thông tin và sẽ liên hệ ngay!
         </div>
 
-        <p class="note">Thông tin của bạn được bảo mật 100%</p>
+        <p class="note">Thông tin của bạn được bảo mật tuyệt đối</p>
 
         <iframe name="hidden_iframe" style="display:none"></iframe>
       </form>
