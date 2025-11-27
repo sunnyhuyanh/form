@@ -1,97 +1,327 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="utf-8">
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Đăng Ký Tham Quan Nhà & Đất — Địa Ốc Gia Phúc</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css"> 
+  <title>Đăng Ký Tham Quan Nhà &amp; Đất</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --navy:#0F172A;--navy2:#1e293b;--gold:#FACC15;--gold2:#EAB308;--gray:#64748B;--light:#F8FAFC;--border:#E2E8F0;
+      --radius:20px;--shadow:0 20px 40px rgba(15,23,42,.12);--transition:all .3s ease;
+    }
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{
+      font-family:'Inter',sans-serif;
+      background:linear-gradient(135deg,#f8fafc,#e2e8f0);
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:20px;
+      color:#1e293b
+    }
+    .card{
+      max-width:560px;width:100%;
+      background:#fff;
+      border-radius:var(--radius);
+      overflow:hidden;
+      box-shadow:var(--shadow);
+      border:1px solid var(--border)
+    }
+    .header{
+      background:linear-gradient(135deg,var(--navy),var(--navy2));
+      color:#fff;
+      padding:40px 32px;
+      text-align:center
+    }
+    .header h1{font-size:26px;font-weight:800;margin-bottom:8px;letter-spacing:0.03em}
+    .header p{font-size:15px;opacity:0.95}
+    .badge{
+      background:rgba(255,255,255,.15);
+      padding:8px 16px;
+      border-radius:50px;
+      font-size:13px;
+      font-weight:600;
+      margin-top:12px;
+      display:inline-block;
+      border:1px solid rgba(255,255,255,.2)
+    }
+    .body{padding:40px 32px}
+    .group{margin-bottom:24px}
+    label{
+      display:block;
+      margin-bottom:10px;
+      font-weight:600;
+      color:#334155;
+      font-size:15px
+    }
+    input[type=text],input[type=tel]{
+      width:100%;
+      padding:16px 18px;
+      border:2px solid #e2e8f0;
+      border-radius:14px;
+      background:#fafbfc;
+      font-size:16px;
+      transition:var(--transition)
+    }
+    input:focus{
+      outline:none;
+      border-color:var(--gold);
+      background:#fff;
+      box-shadow:0 0 0 5px rgba(250,204,21,.18)
+    }
+    .radio-group{
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+      margin-top:8px
+    }
+    .radio-item{
+      display:flex;
+      align-items:center;
+      gap:14px;
+      padding:14px 18px;
+      border:2px solid #e2e8f0;
+      border-radius:14px;
+      background:#fafbfc;
+      cursor:pointer;
+      transition:var(--transition);
+      font-size:15px;
+      font-weight:500
+    }
+    .radio-item:hover{background:#f1f5f9;border-color:#cbd5e1}
+    .radio-item input[type=radio]{width:20px;height:20px;accent-color:var(--gold)}
+    .other-box{margin-top:12px;display:none}
+    .other-box.active{display:block}
+    .other-box input{
+      width:100%;
+      padding:14px 18px;
+      border:2px solid #e2e8f0;
+      border-radius:12px;
+      background:#fff;
+      font-size:15px
+    }
+    .submit{
+      margin-top:10px;
+      width:100%;
+      padding:18px;
+      background:linear-gradient(90deg,var(--gold),var(--gold2));
+      color:#1a1100;
+      font-size:18px;
+      font-weight:800;
+      border:none;
+      border-radius:16px;
+      cursor:pointer;
+      box-shadow:0 10px 30px rgba(250,204,21,.4);
+      transition:var(--transition)
+    }
+    .submit:hover{
+      transform:translateY(-3px);
+      box-shadow:0 15px 35px rgba(250,204,21,.5)
+    }
+    .success{
+      display:none;
+      background:#ecfdf5;
+      border:1px solid #bbf7d0;
+      padding:20px;
+      border-radius:12px;
+      text-align:center;
+      color:#166534;
+      font-weight:600;
+      margin-top:20px;
+      font-size:14px
+    }
+    @media(max-width:640px){
+      .header{padding:32px 24px}
+      .header h1{font-size:22px}
+      .body{padding:32px 24px}
+    }
+  </style>
 </head>
 <body>
 
-<div class="container">
-  <div class="card">
-    <div class="header">
-      <h1>Đăng Ký Tham Quan Nhà & Đất</h1>
-      <p>Phản hồi ngay</p>
-      <div class="badge">Địa Ốc Gia Phúc</div>
-    </div>
+<div class="card">
+  <div class="header">
+    <h1>ĐĂNG KÝ THAM QUAN NHÀ &amp; ĐẤT</h1>
+    <p>Phản hồi ngay</p>
+    <div class="badge">Địa Ốc Gia Phúc</div>
+  </div>
 
-    <div class="body">
-      <form id="form" action="https://docs.google.com/forms/d/e/1FAIpQLScgM9oB0v2uA5i3oY8K7kWz9vX8lP9dR2sF5gH7jK8lM9nO/formResponse" method="POST" target="hidden_iframe" onsubmit="return submitForm(event)">
+  <div class="body">
+    <form id="form"
+          action="https://docs.google.com/forms/d/e/1FAIpQLSeJV94Vc2IkgtxSU9FV4F74-zHBF2wVRWDiylMkgwjXCU378g/formResponse"
+          method="POST"
+          target="hidden_iframe">
 
-        <div class="group">
-          <label>Họ và tên <span style="color:#ef4444">*</span></label>
-          <input type="text" name="entry.1262754767" placeholder="Nguyễn Văn A" required>
+      <!-- Hidden bắt buộc của Google (giữ giống form gốc) -->
+      <input type="hidden" name="fvv" value="1">
+      <input type="hidden" name="fbzx" value="720685767310270333">
+      <input type="hidden" name="pageHistory" value="0">
+      <input type="hidden" name="partialResponse" value='[null,null,"720685767310270333"]'>
+
+      <!-- Họ tên -->
+      <div class="group">
+        <label>Họ và tên <span style="color:#ef4444">*</span></label>
+        <input type="text" name="entry.1968919924" placeholder="Nguyễn Văn A" required>
+      </div>
+
+      <!-- Số điện thoại -->
+      <div class="group">
+        <label>Số điện thoại <span style="color:#ef4444">*</span></label>
+        <input type="tel" name="entry.757442527" placeholder="0901 234 567" required>
+      </div>
+
+      <!-- Nhu cầu mua -->
+      <div class="group">
+        <label>Nhu cầu mua <span style="color:#ef4444">*</span></label>
+        <div class="radio-group">
+          <label class="radio-item">
+            <input type="radio" name="entry.877141234" value="Mua đầu tư" required>
+            <span>Mua đầu tư</span>
+          </label>
+          <label class="radio-item">
+            <input type="radio" name="entry.877141234" value="Mua ở" required>
+            <span>Mua ở</span>
+          </label>
+          <label class="radio-item">
+            <input type="radio" name="entry.877141234" value="Mua làm nhà vườn" required>
+            <span>Mua làm nhà vườn</span>
+          </label>
+          <label class="radio-item">
+            <input type="radio" name="entry.877141234" value="__other_option__" id="nhucau-khac" required>
+            <span>Mục khác</span>
+          </label>
         </div>
-
-        <div class="group">
-          <label>Số điện thoại <span style="color:#ef4444">*</span></label>
-          <input type="tel" name="entry.1009072280" placeholder="0901234567" required>
+        <div class="other-box" id="nhucau-box">
+          <input type="text"
+                 name="entry.877141234.other_option_response"
+                 placeholder="Vui lòng ghi rõ nhu cầu khác...">
         </div>
+      </div>
 
-        <div class="group">
-          <label>Nhu cầu mua <span style="color:#ef4444">*</span></label>
-          <div class="radio-group">
-            <label class="radio-item">
-              <input type="radio" name="entry.1312703791" value="Mua đầu tư" required>
-              <span>Mua đầu tư</span>
-            </label>
-            <label class="radio-item">
-              <input type="radio" name="entry.1312703791" value="Mua ở" required>
-              <span>Mua ở</span>
-            </label>
-            <label class="radio-item">
-              <input type="radio" name="entry.1312703791" value="Mua làm nhà vườn" required>
-              <span>Mua làm nhà vườn</span>
-            </label>
-            <label class="radio-item">
-              <input type="radio" name="entry.1312703791" value="Other:" id="otherNhuCauRadio" required>
-              <span>Other:</span>
-            </label>
-          </div>
-          <div class="other-box" id="otherNhuCauBox">
-            <input type="text" name="entry.1740947791" placeholder="Vui lòng ghi rõ nhu cầu khác...">
-          </div>
+      <!-- Ngày muốn đi tham quan -->
+      <div class="group">
+        <label>Ngày muốn đi tham quan BĐS <span style="color:#ef4444">*</span></label>
+        <div class="radio-group">
+          <label class="radio-item">
+            <input type="radio" name="entry.1506274655" value="Thứ 5" required>
+            <span>Thứ 5</span>
+          </label>
+          <label class="radio-item">
+            <input type="radio" name="entry.1506274655" value="Chủ Nhật" required>
+            <span>Chủ Nhật</span>
+          </label>
+          <label class="radio-item">
+            <input type="radio" name="entry.1506274655" value="__other_option__" id="ngay-khac" required>
+            <span>Mục khác</span>
+          </label>
         </div>
-
-        <div class="group">
-          <label>Ngày muốn đi tham quan BĐS <span style="color:#ef4444">*</span></label>
-          <div class="radio-group">
-            <label class="radio-item">
-              <input type="radio" name="entry.1622652631" value="Thứ 5" required>
-              <span>Thứ 5</span>
-            </label>
-            <label class="radio-item">
-              <input type="radio" name="entry.1622652631" value="Chủ Nhật" required>
-              <span>Chủ Nhật</span>
-            </label>
-            <label class="radio-item">
-              <input type="radio" name="entry.1622652631" value="Other:" id="otherNgayRadio" required>
-              <span>Other:</span>
-            </label>
-          </div>
-          <div class="other-box" id="otherNgayBox">
-            <input type="text" name="entry.1740947791" placeholder="Ví dụ: Thứ 7 tuần này, 15/12, hoặc ngày cụ thể...">
-          </div>
+        <div class="other-box" id="ngay-box">
+          <input type="text"
+                 name="entry.1506274655.other_option_response"
+                 placeholder="Ví dụ: Thứ 7 tuần này, 15/12 hoặc ngày cụ thể...">
         </div>
+      </div>
 
-        <button type="submit" class="submit" id="btn">
-          <span id="btnText">GỬI YÊU CẦU NGAY</span>
-        </button>
+      <button type="submit" class="submit" id="btn">GỬI YÊU CẦU NGAY</button>
 
-        <div class="success" id="success">
-          Cảm ơn quý khách! Chúng tôi đã nhận thông tin và sẽ liên hệ ngay!
-        </div>
+      <div class="success" id="success">
+        Cảm ơn anh/chị!<br>Thông tin đã được gửi thành công. Chúng tôi sẽ liên hệ trong thời gian sớm nhất.
+      </div>
 
-        <p class="note">Thông tin của bạn được bảo mật tuyệt đối</p>
-
-        <iframe name="hidden_iframe" style="display:none"></iframe>
-      </form>
-    </div>
+      <iframe name="hidden_iframe" style="display:none"></iframe>
+    </form>
   </div>
 </div>
 
-<script src="script.js"></script>
+<script>
+  // Toggle ô "Mục khác" cho Nhu cầu
+  const radioNhuCauKhac = document.getElementById('nhucau-khac');
+  const boxNhuCau = document.getElementById('nhucau-box');
+  const otherNhuCauInput = boxNhuCau.querySelector('input');
+
+  radioNhuCauKhac.addEventListener('change', function (e) {
+    if (e.target.checked) {
+      boxNhuCau.classList.add('active');
+    }
+  });
+
+  document.querySelectorAll('input[name="entry.877141234"]').forEach(function (r) {
+    if (r.id !== 'nhucau-khac') {
+      r.addEventListener('change', function () {
+        boxNhuCau.classList.remove('active');
+        otherNhuCauInput.value = '';
+      });
+    }
+  });
+
+  // Toggle ô "Mục khác" cho Ngày tham quan
+  const radioNgayKhac = document.getElementById('ngay-khac');
+  const boxNgay = document.getElementById('ngay-box');
+  const otherNgayInput = boxNgay.querySelector('input');
+
+  radioNgayKhac.addEventListener('change', function (e) {
+    if (e.target.checked) {
+      boxNgay.classList.add('active');
+    }
+  });
+
+  document.querySelectorAll('input[name="entry.1506274655"]').forEach(function (r) {
+    if (r.id !== 'ngay-khac') {
+      r.addEventListener('change', function () {
+        boxNgay.classList.remove('active');
+        otherNgayInput.value = '';
+      });
+    }
+  });
+
+  // Validation + hiệu ứng gửi
+  document.getElementById('form').addEventListener('submit', function (e) {
+    const n1 = document.querySelector('input[name="entry.877141234"]:checked');
+    const n2 = document.querySelector('input[name="entry.1506274655"]:checked');
+
+    if (!n1 || !n2) {
+      e.preventDefault();
+      alert('Vui lòng chọn đầy đủ thông tin!');
+      return false;
+    }
+
+    if (n1.value === '__other_option__' && !otherNhuCauInput.value.trim()) {
+      e.preventDefault();
+      alert('Vui lòng ghi rõ nhu cầu khác!');
+      return false;
+    }
+
+    if (n2.value === '__other_option__' && !otherNgayInput.value.trim()) {
+      e.preventDefault();
+      alert('Vui lòng ghi rõ ngày tham quan!');
+      return false;
+    }
+
+    const btn = document.getElementById('btn');
+    btn.innerHTML = 'ĐANG GỬI...';
+    btn.disabled = true;
+  });
+
+  // Khi Google nhận xong (iframe load) → hiện thông báo thành công
+  window.addEventListener('load', function () {
+    const iframe = document.querySelector('iframe[name="hidden_iframe"]');
+    iframe.addEventListener('load', function () {
+      const btn = document.getElementById('btn');
+      const success = document.getElementById('success');
+
+      btn.innerHTML = 'ĐÃ GỬI THÀNH CÔNG';
+      btn.style.background = '#10b981';
+      btn.style.boxShadow = '0 10px 30px rgba(16,185,129,.4)';
+      success.style.display = 'block';
+
+      setTimeout(function () {
+        location.reload();
+      }, 3500);
+    });
+  });
+</script>
+
 </body>
 </html>
