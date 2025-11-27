@@ -1,48 +1,46 @@
-// Biến cờ kiểm tra submit xong
-let submitted = false;
-const f = document.getElementById('contactForm');
-const hidden = document.getElementById('hiddenFields');
-const m = {
-  name:  document.getElementById('mapName').value,    // ví dụ: entry.1234567890
-  phone: document.getElementById('mapPhone').value,  // ví dụ: entry.0987654321
-  email: document.getElementById('mapEmail').value,
-  msg:    document.getElementById('mapMessage').value
-};
-
-// Tạo input ẩn đúng tên entry.* trước khi gửi
-f.addEventListener('submit', (e)=>{
-  // Nếu thiếu mapping, cảnh báo
-  if(Object.values(m).some(v=>!/^entry\.[0-9]+$/.test(v))){
+function submitForm(e) {
+  // Kiểm tra radio buttons đã chọn chưa
+  const nhuCau = document.querySelector('input[name="entry.1312703791"]:checked');
+  const thoiGian = document.querySelector('input[name="entry.1622652631"]:checked');
+  if (!nhuCau || !thoiGian) {
     e.preventDefault();
-    alert('Vui lòng điền đúng các ID entry.* của Google Form (nhấn 3 chấm > Lấy liên kết điền trước để xem mã entry).');
-    return;
+    alert('Vui lòng chọn Nhu cầu quan tâm và Thời gian tham quan!');
+    return false;
   }
-  // Xoá cũ
-  hidden.innerHTML = '';
-  // Tạo các input name=entry.xxxx
-  const pairs = [
-    [m.name,  document.getElementById('name').value],
-    [m.phone, document.getElementById('phone').value],
-    [m.email, document.getElementById('email').value],
-    [m.msg,    document.getElementById('message').value]
-  ];
-  for(const [n,v] of pairs){
-    const inp = document.createElement('input');
-    inp.type = 'hidden';
-    inp.name = n;
-    inp.value = v;
-    hidden.appendChild(inp);
-  }
-  // Trạng thái nút
-  const btn = document.getElementById('btnSubmit');
-  btn.disabled = true; btn.textContent = 'ĐANG GỬI...';
-  // Sau khi iframe load xong (Google Form redirect), reset
-  const iframe = document.getElementById('hidden_iframe');
-  iframe.addEventListener('load', ()=>{
-    if(submitted){
-      btn.textContent = 'ĐÃ GỬI ✔';
-      setTimeout(()=>{ btn.disabled=false; btn.textContent='GỬI NGAY'; f.reset(); }, 1200);
-      submitted=false;
-    }
-  }, { once:false });
-});
+
+  const btn = document.getElementById('btn');
+  const txt = document.getElementById('btnText');
+  const success = document.getElementById('success');
+
+  btn.disabled = true;
+  txt.textContent = 'ĐANG GỬI...';
+
+  // Khi Google Form trả về (iframe load)
+  // Lưu ý: window.addEventListener('message') không hoạt động trong ngữ cảnh của form POST đến Google Forms,
+  // chúng ta cần lắng nghe sự kiện 'load' của iframe ẩn
+  
+  const iframe = document.getElementsByName('hidden_iframe')[0];
+  
+  const handler = function() {
+    setTimeout(() => {
+      txt.textContent = 'ĐÃ GỬI THÀNH CÔNG';
+      btn.style.background = '#10b981'; // Màu xanh lá cây
+      success.style.display = 'block';
+      
+      // Reset form sau 4 giây
+      setTimeout(() => {
+        document.getElementById('form').reset();
+        btn.disabled = false;
+        txt.textContent = 'GỬI YÊU CẦU NGAY';
+        btn.style.background = ''; // Trở lại màu mặc định (từ CSS)
+        success.style.display = 'none';
+      }, 4000);
+      
+      iframe.removeEventListener('load', handler); // Xóa handler sau khi hoàn thành
+    }, 800);
+  };
+  
+  iframe.addEventListener('load', handler);
+  
+  return true;
+}
