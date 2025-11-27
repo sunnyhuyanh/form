@@ -7,10 +7,42 @@
   <link rel="stylesheet" href="style.css"> 
 </head>
 <body>
-  
   <div class="wrap">
-    </div>
-  
+    <section class="consult" id="tu-van">
+      <div class="consult-wrap">
+        <div class="consult-head">
+          <span>GỬI YÊU CẦU TƯ VẤN</span>
+          <span class="chip">⏱️ Phản hồi ngay</span>
+        </div>
+        <div class="consult-body">
+          <form id="contactForm" action="https://docs.google.com/forms/d/e/1FAIpQLSdHWubLyQp9uovFEy1sbvguNvrTK_p1PzgHWSldk7EaaZ8_Lg/formResponse" method="POST" target="hidden_iframe" onsubmit="submitted=true;">
+            <input type="hidden" id="mapName" value="entry.1262754767">
+            <input type="hidden" id="mapPhone" value="entry.1009072280">
+            <input type="hidden" id="mapEmail" value="entry.689609400">
+            <input type="hidden" id="mapMessage" value="entry.1740947791">
+
+            <div class="form-row">
+              <input class="inp" type="text" id="name" placeholder="Họ và tên" required>
+            </div>
+            <div class="form-grid form-row">
+              <input class="inp" type="tel" id="phone" placeholder="Số điện thoại" required>
+              <input class="inp" type="email" id="email" placeholder="Email (không bắt buộc)">
+            </div>
+            <div class="form-row">
+              <textarea class="inp area" id="message" placeholder="Yêu cầu" required></textarea>
+            </div>
+            <div id="hiddenFields"></div>
+
+            <div class="submit-bar">
+              <button class="btn-submit" type="submit" id="btnSubmit">GỬI NGAY</button>
+            </div>
+            <div class="note">Sau khi gửi thành công, trang sẽ hiện thông báo “Cảm ơn đã gửi”.</div>
+            <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
+          </form>
+        </div>
+      </div>
+    </section>
+  </div>
   <script src="script.js"></script>
 </body>
 </html>
