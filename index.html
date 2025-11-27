@@ -1,48 +1,98 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>ĐĂNG KÝ THAM QUAN — Địa Ốc Gia Phúc</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Đăng Ký Tham Quan Nhà & Đất — Địa Ốc Gia Phúc</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css"> 
 </head>
 <body>
-  <div class="wrap">
-    <section class="consult" id="tu-van">
-      <div class="consult-wrap">
-        <div class="consult-head">
-          <span>ĐĂNG KÝ THAM QUAN</span>
-          <span class="chip">⏱️ Phản hồi ngay</span>
-        </div>
-        <div class="consult-body">
-          <form id="contactForm" action="https://docs.google.com/forms/d/e/1FAIpQLSdHWubLyQp9uovFEy1sbvguNvrTK_p1PzgHWSldk7EaaZ8_Lg/formResponse" method="POST" target="hidden_iframe" onsubmit="submitted=true;">
-            <input type="hidden" id="mapName" value="entry.1262754767">
-            <input type="hidden" id="mapPhone" value="entry.1009072280">
-            <input type="hidden" id="mapEmail" value="entry.689609400">
-            <input type="hidden" id="mapMessage" value="entry.1740947791">
 
-            <div class="form-row">
-              <input class="inp" type="text" id="name" placeholder="Họ và tên" required>
-            </div>
-            <div class="form-grid form-row">
-              <input class="inp" type="tel" id="phone" placeholder="Số điện thoại" required>
-              <input class="inp" type="email" id="email" placeholder="Email (không bắt buộc)">
-            </div>
-            <div class="form-row">
-              <textarea class="inp area" id="message" placeholder="Yêu cầu" required></textarea>
-            </div>
-            <div id="hiddenFields"></div>
+<div class="container">
+  <div class="card">
+    <div class="header">
+      <h1>Đăng Ký Tham Quan Nhà & Đất</h1>
+      <p>Nhận tư vấn miễn phí & lịch tham quan dự án nhanh nhất</p>
+      <div class="badge">Phản hồi trong 5 phút</div>
+    </div>
 
-            <div class="submit-bar">
-              <button class="btn-submit" type="submit" id="btnSubmit">GỬI NGAY</button>
-            </div>
-            <div class="note">Sau khi gửi thành công, trang sẽ hiện thông báo “Cảm ơn đã gửi”.</div>
-            <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
-          </form>
+    <div class="body">
+      <form id="form" action="https://docs.google.com/forms/d/e/1FAIpQLScgM9oB0v2uA5i3oY8K7kWz9vX8lP9dR2sF5gH7jK8lM9nO/formResponse" method="POST" target="hidden_iframe" onsubmit="return submitForm(event)">
+
+        <div class="group">
+          <label>Họ và tên <span style="color:#ef4444">*</span></label>
+          <input type="text" name="entry.1262754767" placeholder="Nguyễn Văn A" required>
         </div>
-      </div>
-    </section>
+
+        <div class="grid">
+          <div class="group">
+            <label>Số điện thoại <span style="color:#ef4444">*</span></label>
+            <input type="tel" name="entry.1009072280" placeholder="0901234567" required>
+          </div>
+          <div class="group">
+            <label>Email</label>
+            <input type="email" name="entry.689609400" placeholder="email@domain.com">
+          </div>
+        </div>
+
+        <div class="group">
+          <label>Nhu cầu quan tâm <span style="color:#ef4444">*</span></label>
+          <div class="radio-group">
+            <label class="radio-item">
+              <input type="radio" name="entry.1312703791" value="Mua để ở" required>
+              <span>Mua để ở</span>
+            </label>
+            <label class="radio-item">
+              <input type="radio" name="entry.1312703791" value="Đầu tư sinh lời" required>
+              <span>Đầu tư sinh lời</span>
+            </label>
+            <label class="radio-item">
+              <input type="radio" name="entry.1312703791" value="Cả để ở và đầu tư" required>
+              <span>Cả để ở và đầu tư</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="group">
+          <label>Thời gian dự kiến tham quan dự án <span style="color:#ef4444">*</span></label>
+          <div class="radio-group">
+            <label class="radio-item">
+              <input type="radio" name="entry.1622652631" value="Trong tuần này" required>
+              <span>Trong tuần này</span>
+            </label>
+            <label class="radio-item">
+              <input type="radio" name="entry.1622652631" value="Cuối tuần này" required>
+              <span>Cuối tuần này</span>
+            </label>
+            <label class="radio-item">
+              <input type="radio" name="entry.1622652631" value="Tuần sau" required>
+              <span>Tuần sau</span>
+            </label>
+            <label class="radio-item">
+              <input type="radio" name="entry.1622652631" value="Chưa xác định, chỉ cần tư vấn trước" required>
+              <span>Chưa xác định, chỉ cần tư vấn trước</span>
+            </label>
+          </div>
+        </div>
+
+        <button type="submit" class="submit" id="btn">
+          <span id="btnText">GỬI YÊU CẦU NGAY</span>
+        </button>
+
+        <div class="success" id="success">
+          Cảm ơn quý khách! Thông tin đã được gửi thành công.<br>
+          Chúng tôi sẽ liên hệ ngay trong vài phút tới!
+        </div>
+
+        <p class="note">Thông tin của bạn được bảo mật 100%</p>
+
+        <iframe name="hidden_iframe" style="display:none"></iframe>
+      </form>
+    </div>
   </div>
-  <script src="script.js"></script>
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>
